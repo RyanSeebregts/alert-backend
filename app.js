@@ -78,6 +78,12 @@ app.post('/socket-test', async (req, res) => {
     return res.status(200).json({ hello: 'hello' });
 });
 
+app.get('/location-send', async (req, res) => {
+    console.log(req.query)
+    io.emit("all users", req.query.msg);
+    return res.status(200).json({ hello: 'hello' });
+});
+
 app.use('/user', userRoutes)
 
 
