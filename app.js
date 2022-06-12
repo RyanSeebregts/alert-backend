@@ -19,7 +19,7 @@ const userRoutes = require('./routes/user.route')
 //const eventRoutes = require('./routes/event.route')
 
 const app = express();
-let activeUsers = [];
+global.activeUsers = [];
 
 //set time zone to ensure consistency
 process.env.TZ = 'Africa/Johannesburg';
@@ -51,9 +51,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../client/public')))
 
 //routes
-app.post('/test', async (req, res) => {
-    console.log(req.body)
-    return res.status(200).json({ hello: 'hello' });
+app.get('/get-version', async (req, res) => {
+    return res.status(200).json({ v: '2.2' });
 });
 
 app.post('/check-username', async (req, res) => {
@@ -91,7 +90,7 @@ const server = http.createServer(app).listen(PORT, function() {
   console.log('server listening on port ', PORT);
 });
 
-const io = socketIo(server, {
+global.io = socketIo(server, {
     cors: {
       origin: '*',
     }

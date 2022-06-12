@@ -19,7 +19,9 @@ const UserSchema = new mongoose.Schema({
       }, 
       required: false
     },
-    currentStatus: {type: String, required: true, max: 30}
+    lastUpdate: {type: Date},
+    currentStatus: {type: String, required: true, max: 30},
+    disableAlertSend: {type: Boolean}
   });
 
 module.exports = mongoose.model('User', UserSchema);
