@@ -1,6 +1,6 @@
-const Friend = require("../models/Friend.model");
+const Friend = require("../models/friend.model");
 const FriendRequest = require("../models/friendRequest.model");
-const User = require("../models/Friend.model");
+const User = require("../models/friend.model");
 const {getUserFriendInfo} = require('./user')
 
 exports.createFriend = async ({person1, person2}) => {
